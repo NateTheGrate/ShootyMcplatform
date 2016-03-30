@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\BoundryChecker.cs" />
      <Compile Include="Assets\Scripts\BoxController.cs" />
      <Compile Include="Assets\Scripts\BoxSpawner.cs" />
+     <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\Player Scipts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Player Scipts\GroundCheckController.cs" />
      <Compile Include="Assets\Scripts\Player Scipts\PlayerController.cs" />
