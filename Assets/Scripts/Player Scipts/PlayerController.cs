@@ -10,17 +10,21 @@ public class PlayerController : MonoBehaviour {
 	public float yForceAwayFromWall = 400;
 	public float xForceAwayFromWall = 600;
 
+
 	[HideInInspector]public bool jump;
 	/** [HideInInspector] **/public bool grounded;
 	[HideInInspector]public int jumpLimit = 2;
+	[HideInInspector]public bool flipped = false;
 	/** [HideInInspector] **/public int jumpNumber = 0;
 
 	private Rigidbody2D rb;
 	private GameObject wallObject;
+	private GameObject weapon;
 
 	[HideInInspector]public bool againstWall = false;
-	[HideInInspector]public Transform groundCheck;
+	public Transform groundCheck;
 	[HideInInspector]public bool movementControl = true;
+	[HideInInspector]public bool holdingWeapon = false;
 
 	private int ticks;
 	// Use this for initialization
@@ -48,6 +52,13 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			// playerlayer, groundlayer, ignore collision?
 			Physics2D.IgnoreLayerCollision (9, 13, rb.velocity.y < 0.05);
+		}
+		if (weapon != null) {
+			if (weapon.GetComponent<WeaponController> ().flipped == true) {
+				GetComponent<SpriteRenderer> ().flipX = true;
+			} else {
+				GetComponent<SpriteRenderer> ().flipX = false;
+			}
 		}
 
 		/* if (Input.GetKeyDown(KeyCode.W) ) {
@@ -108,9 +119,9 @@ public class PlayerController : MonoBehaviour {
 			jumpNumber = 0;
 
 		// jumping off of other objects( just one for now )
-		} else if (grounded && (!againstWall) && (!other.gameObject.tag.Equals ("Platform") || !other.gameObject.tag.Equals ("Wall") )   ) {
+		}/** else if (grounded && (!againstWall) && (!other.gameObject.tag.Equals ("Platform") || !other.gameObject.tag.Equals ("Wall") )   ) {
 			jumpNumber--;	
-		}
+		} doesn't work, evertime you jump through a platform it sets jumpNumber to -10**/
 		if (other.gameObject.tag.Equals ("Wall")) {
 			againstWall = true;
 			wallObject = other.gameObject;
@@ -120,16 +131,21 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		//Weapon Pickups
-		if(other.gameObject.tag.Equals("Weapon") ){
+		if(other.gameObject.tag.Equals("Weapon") && !holdingWeapon ){
 			other.transform.SetParent (this.transform);
+			weapon = other.gameObject;
 			//destroy rigibbody and disable collider components
 			//you can only destroy and recreate rigidbodies :/
 			Destroy( other.gameObject.GetComponent<Rigidbody2D>() );
-			foreach (BoxCollider2D collisionBox in other.gameObject.GetComponents<BoxCollider2D>()) {
+			foreach (Collider2D collisionBox in other.gameObject.GetComponents<Collider2D>()) {
 				collisionBox.enabled = false;
 			}
 
 			other.gameObject.GetComponent<WeaponController> ().attachedTo = this.gameObject;
+			foreach( ArmController arm in this.GetComponentsInChildren<ArmController> () ){
+				arm.weapon = other.gameObject.GetComponent<WeaponController>();
+			}
+			holdingWeapon = true;
 		}
 	}
 

@@ -5,20 +5,26 @@ public class BulletController : MonoBehaviour {
 	public float speed = 50;
 	private Rigidbody2D rb;
 	[HideInInspector]public GameObject parent; // the gun shooting the object
+	public GameObject execption;
+	public float damage = 1;
+	public float angle;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		float angle = parent.GetComponent<WeaponController>().angle + 0.25f;
-		rb.velocity = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * speed;
-
+		angle = parent.GetComponent<WeaponController>().angleInDeg;
+	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+		rb.velocity = new Vector2 (Mathf.Cos (Mathf.Deg2Rad * angle), Mathf.Sin (Mathf.Deg2Rad * angle)) * speed;
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-		Destroy (this.gameObject);
+		if (other.gameObject.tag != "Player" ) {	//apply damage here
+			Destroy (this.gameObject);
+		}
 	}
 }

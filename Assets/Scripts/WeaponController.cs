@@ -8,7 +8,10 @@ public class WeaponController : MonoBehaviour {
 	[HideInInspector]public GameObject attachedTo;
 	[HideInInspector]public float angle = 0;
 	[HideInInspector]public float angleInDeg = 0;
+	[HideInInspector]public bool flipped = false;
 	public GameObject bullet;
+	public float bulletOffsetX = 0;
+	public float bulletOffsetY = 0;
 	public float fireRate = 30;
 	public float radius = 1;
 	public double threshold = 1;
@@ -27,35 +30,43 @@ public class WeaponController : MonoBehaviour {
 				Vector2 mousePosition = Camera.main.ScreenToWorldPoint (new Vector3 (mouseX, mouseY, 0));
 				//angle between attached object and mouse(in radians)
 				angle = Mathf.Atan2 (attachedTo.transform.position.y - mousePosition.y, attachedTo.transform.position.x - mousePosition.x) + 135;
-
+				
 				//polar(angle and radius) --> rectangle(x and y) coordinates MUST BE IN RADIANS
 				// x = rcos(theta)
-				float x = radius * Mathf.Cos (angle);
+				float x = radius * Mathf.Cos (angle) ;
 				// y = rsin(theta)
-				float y = radius * Mathf.Sin (angle);
+				float y = radius * Mathf.Sin (angle) ;
 				angleInDeg = ((angle - 135) * 180 / Mathf.PI) + 185;
 				if (Mathf.Abs (this.transform.rotation.eulerAngles.z - angleInDeg) > threshold) {
 				
 					//flip weapon
 				if ( (angleInDeg > 90) && (angleInDeg < 270) ) {
 					GetComponent<SpriteRenderer> ().flipY = true;
-				}else { GetComponent<SpriteRenderer> ().flipY = false; }
+					GetComponent<SpriteRenderer> ().sortingOrder = 0;
+					flipped = true;
+				}else { 
+					GetComponent<SpriteRenderer> ().flipY = false; 
+					flipped = false;
+					GetComponent<SpriteRenderer> ().sortingOrder = 1;
+				}
 					
 					transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angleInDeg));
 			
 					transform.position = new Vector2 (x + attachedTo.transform.position.x, y + attachedTo.transform.position.y);
 
 				}
-			if (Input.GetMouseButton (0)) {
-				Debug.Log("Pressed left click.");
-				if (ticks >= fireRate) {
-					bullet.GetComponent<BulletController> ().parent = this.gameObject;
-					Instantiate (bullet, this.transform.position, this.transform.rotation);
-					ticks = 0;
+				if (Input.GetMouseButton (0)) {
+				
+					if (ticks >= fireRate) {
+						bullet.GetComponent<BulletController> ().parent = this.gameObject;
+					Vector2 spawnPosition = new Vector2(transform.position.x /**+  (bulletOffsetX * Mathf.Sign(Mathf.Cos(angle) ) )**/  , transform.position.y /** + ( bulletOffsetY * Mathf.Sign(Mathf.Sin(angle) ) )**/ );
+						Instantiate (bullet, spawnPosition, Quaternion.Euler (new Vector3 (0, 0, angleInDeg)));
+				
+						ticks = 0;
+					}
 				}
 			}
+			ticks++;
 		}
-		ticks++;
-	}
 
-}
+	}
