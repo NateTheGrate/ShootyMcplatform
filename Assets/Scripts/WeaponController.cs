@@ -59,7 +59,8 @@ public class WeaponController : MonoBehaviour {
 				
 					if (ticks >= fireRate) {
 						bullet.GetComponent<BulletController> ().parent = this.gameObject;
-					Vector2 spawnPosition = new Vector2(transform.position.x /**+  (bulletOffsetX * Mathf.Sign(Mathf.Cos(angle) ) )**/  , transform.position.y /** + ( bulletOffsetY * Mathf.Sign(Mathf.Sin(angle) ) )**/ );
+						Vector2 spawnPosition = new Vector2 (0, 0, 0);
+						spawnPosition = new Vector2(transform.position.x +  (bulletOffsetX * Mathf.Sign( Mathf.Cos(angle) ) + Mathf.Cos(angle) )  , transform.position.y  + ( bulletOffsetY * Mathf.Sign( Mathf.Sin(angle) ) + Mathf.Sin(angle) ) );
 						Instantiate (bullet, spawnPosition, Quaternion.Euler (new Vector3 (0, 0, angleInDeg)));
 				
 						ticks = 0;
