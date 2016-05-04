@@ -296,8 +296,7 @@ MonoBehaviour:
   angleInDeg: 0
   flipped: 0
   bullet: {fileID: 124820, guid: 787397e56aedc91479e7866486679073, type: 2}
-  bulletOffsetX: 0
-  bulletOffsetY: 0
+  bulletSpawn: {fileID: 320924277}
   fireRate: 30
   radius: 1.1
   threshold: 1
@@ -408,15 +407,43 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 232975962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.1173787, y: 1.7578516, z: 0}
+  m_LocalPosition: {x: -2.25, y: 1.35, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_Children: []
+  m_Children:
+  - {fileID: 320924277}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!4 &307413267 stripped
 Transform:
   m_PrefabParentObject: {fileID: 476572, guid: dde26a89f190b4343b72e1a5c60c9b7f, type: 2}
   m_PrefabInternal: {fileID: 36859031}
+--- !u!1 &320924276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 320924277}
+  m_Layer: 11
+  m_Name: Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &320924277
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 320924276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 232975967}
+  m_RootOrder: 0
 --- !u!4 &440621821 stripped
 Transform:
   m_PrefabParentObject: {fileID: 469176, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}

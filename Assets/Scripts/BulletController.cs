@@ -4,15 +4,13 @@ using System.Collections;
 public class BulletController : MonoBehaviour {
 	public float speed = 50;
 	private Rigidbody2D rb;
-	[HideInInspector]public GameObject parent; // the gun shooting the object
 	public GameObject execption;
 	public float damage = 1;
-	public float angle;
+	public float angle = 0;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		angle = parent.GetComponent<WeaponController>().angleInDeg;
 	
 	}
 	
