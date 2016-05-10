@@ -73,10 +73,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c0c8b01d0a7044aafce94af77ada2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 75
+  speed: 150
   execption: {fileID: 0}
   damage: 1
-  angle: 142.48715
+  angle: 73.65896
 --- !u!212 &21276486
 SpriteRenderer:
   m_ObjectHideFlags: 1

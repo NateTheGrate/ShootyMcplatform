@@ -14,6 +14,7 @@ public class WeaponController : MonoBehaviour {
 	public float fireRate = 30;
 	public float radius = 1;
 	public double threshold = 1;
+	public float scale = 1;
 
 	private int ticks;
 	// Use this for initialization
@@ -40,8 +41,10 @@ public class WeaponController : MonoBehaviour {
 					//flip weapon when above or below the player
 					if ( (angleInDeg > 90) && (angleInDeg < 270) ) {
 						flip ();
+						
 					}else { 
 						unflip ();
+						
 					}
 						
 					transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angleInDeg));
@@ -76,19 +79,19 @@ public class WeaponController : MonoBehaviour {
 		}
 		
 		void flip(){
-			GetComponent<SpriteRenderer> ().flipY = true;
+			transform.localScale = new Vector3( scale, -scale, scale );
 			GetComponent<SpriteRenderer> ().sortingOrder = 0;
 			flipped = true;
 		}
 
 		void unflip(){
-			GetComponent<SpriteRenderer> ().flipY = false; 
+			transform.localScale = new Vector3( scale, scale, scale ); 
 			flipped = false;
 			GetComponent<SpriteRenderer> ().sortingOrder = 1;
 		}
 
 		float radToDeg(float rads){
-			return ((angle - 135) * 180 / Mathf.PI) + 185;
+			return ((angle - 135) * 180 / Mathf.PI) + 180.5F;
 		} 
 		
 		float coordsToAngle( float y2, float y1, float x2, float x1){
