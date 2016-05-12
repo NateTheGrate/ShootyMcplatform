@@ -9,11 +9,14 @@ public class WeaponController : MonoBehaviour {
 	[HideInInspector]public float angle = 0;
 	[HideInInspector]public float angleInDeg = 0;
 	[HideInInspector]public bool flipped = false;
+	[HideInInspector]public double threshold = 1; //how much an angle(in degrees) it takes to cause rotation could reduce the jitter
+
 	public GameObject bullet;
 	public Transform bulletSpawn;
 	public float fireRate = 30;
+	public bool semiautomatic = false; //semiautomatic in this game means fire on click, a rocket launcher for example could be semiautomatic but you shouldn't be able to fire it every click
+
 	public float radius = 1;
-	public double threshold = 1;
 	public float scale = 1;
 
 	private int ticks;
@@ -53,14 +56,14 @@ public class WeaponController : MonoBehaviour {
 					
 				}
 
-				/////////////////////////////////////////////
 				////////////////Bullet Stuff////////////////
-				///////////////////////////////////////////
 				if (Input.GetMouseButton (0)) {
-				
-					if (ticks >= fireRate) {
+
+				//checks wether its semiautomatic or not
+				if ( (ticks >= fireRate) || (Input.GetMouseButtonDown(0) && semiautomatic) ) {
+						//spawn the bullet
 						bullet.GetComponent<BulletController> ().angle = angleInDeg;
-					Instantiate (bullet, bulletSpawn.position, Quaternion.Euler (new Vector3 (0, 0, angleInDeg)));
+						Instantiate (bullet, bulletSpawn.position, Quaternion.Euler (new Vector3 (0, 0, angleInDeg)));
 						ticks = 0;
 					}
 				}
@@ -68,6 +71,7 @@ public class WeaponController : MonoBehaviour {
 			ticks++;
 		}
 		
+		////////////////Math Stuff////////////////
 		Vector2 polarToRectangular( float angle, float radius){
 			//polar(angle and radius) --> rectangle(x and y) coordinates MUST BE IN RADIANS
 			// x = rcos(theta)
@@ -79,12 +83,15 @@ public class WeaponController : MonoBehaviour {
 		}
 		
 		void flip(){
+			//flip over y axis, also flips children
 			transform.localScale = new Vector3( scale, -scale, scale );
+			//character turns to the other side
 			GetComponent<SpriteRenderer> ().sortingOrder = 0;
 			flipped = true;
 		}
 
 		void unflip(){
+			//flip back over y axis, also flips children
 			transform.localScale = new Vector3( scale, scale, scale ); 
 			flipped = false;
 			GetComponent<SpriteRenderer> ().sortingOrder = 1;

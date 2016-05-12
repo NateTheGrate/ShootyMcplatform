@@ -8,7 +8,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 476054}
-  m_Layer: 0
+  - 120: {fileID: 12099220}
+  - 114: {fileID: 11424948}
+  m_Layer: 9
   m_Name: Laser Sight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +25,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401604}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,8 +43,8 @@ GameObject:
   - 212: {fileID: 21212272}
   - 114: {fileID: 11452684}
   - 50: {fileID: 5059126}
-  - 60: {fileID: 6027130}
-  m_Layer: 0
+  - 60: {fileID: 6005696}
+  m_Layer: 9
   m_Name: AWP
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -56,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.574, y: 0.07, z: 0}
+  m_LocalPosition: {x: 0.523, y: -0.002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 481282}
@@ -68,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.047, y: -0.1094, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 481282}
@@ -95,7 +97,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 173958}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -104,7 +106,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6027130
+--- !u!60 &6005696
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -118,59 +120,57 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 0.9219105, y: 0.045761306}
-      - {x: 0.92182446, y: 0.0277416}
-      - {x: 0.97728276, y: 0.026976038}
-      - {x: 0.97771573, y: 0.04634697}
-      - {x: 1.0790455, y: 0.04629818}
-      - {x: 1.0788741, y: 0.07767914}
-      - {x: 0.9796629, y: 0.077859975}
-      - {x: 0.98108315, y: 0.10477716}
-      - {x: 0.9201019, y: 0.10328961}
-      - {x: 0.9215119, y: 0.083488286}
-      - {x: 0.19651341, y: 0.08073305}
-      - {x: 0.19910514, y: 0.24530408}
-      - {x: 0.0961144, y: 0.24694721}
-      - {x: 0.09662223, y: 0.19886467}
-      - {x: -0.12492871, y: 0.1989839}
-      - {x: -0.12283504, y: 0.22583315}
-      - {x: -0.1846844, y: 0.22604977}
-      - {x: -0.18221724, y: 0.2037061}
-      - {x: -0.39803326, y: 0.2061236}
-      - {x: -0.3980013, y: 0.24001956}
-      - {x: -0.52272797, y: 0.24288017}
-      - {x: -0.5254562, y: 0.102576}
-      - {x: -0.39668107, y: 0.101359725}
-      - {x: -0.3987924, y: 0.038640324}
-      - {x: -0.6412163, y: 0.04318418}
-      - {x: -0.71696776, y: 0.055912256}
-      - {x: -0.90229464, y: 0.056802146}
-      - {x: -1.0799999, y: 0.105}
-      - {x: -1.0799999, y: -0.255}
-      - {x: -0.9630896, y: -0.25410706}
-      - {x: -0.9154407, y: -0.21783756}
-      - {x: -0.73872405, y: -0.21302779}
-      - {x: -0.7368916, y: -0.1785877}
-      - {x: -0.67575943, y: -0.17873831}
-      - {x: -0.6328784, y: -0.2078132}
-      - {x: -0.5579524, y: -0.25296825}
-      - {x: -0.35675216, y: -0.25546223}
-      - {x: -0.3598082, y: -0.16339149}
-      - {x: -0.23918915, y: -0.16497593}
-      - {x: -0.060802937, y: -0.16259132}
-      - {x: -0.061169267, y: -0.113622114}
-      - {x: 0.08473241, y: -0.09072672}
-      - {x: 0.22049737, y: -0.07043752}
-      - {x: 0.22272027, y: -0.055236362}
-      - {x: 0.47840786, y: -0.056171734}
-      - {x: 0.47872138, y: -0.079463914}
-      - {x: 0.60267425, y: -0.0805147}
-      - {x: 0.60360885, y: -0.006563708}
-      - {x: 0.5807328, y: -0.010191955}
-      - {x: 0.5818243, y: 0.040742785}
-    - - {x: -0.55, y: -0.085}
-      - {x: -0.46762133, y: -0.09517215}
-      - {x: -0.55, y: -0.105}
+    - - {x: 0.3547454, y: -0.031417213}
+      - {x: 0.52460814, y: -0.017585792}
+      - {x: 0.52460766, y: 0.017185636}
+      - {x: 0.4119935, y: 0.034571417}
+      - {x: 0.36626816, y: 0.032662872}
+      - {x: -0.33582973, y: 0.011552211}
+      - {x: -0.3457346, y: 0.18922016}
+      - {x: -0.40178347, y: 0.18170846}
+      - {x: -0.4447508, y: 0.1464279}
+      - {x: -0.6584852, y: 0.13792616}
+      - {x: -0.93952036, y: 0.14484273}
+      - {x: -0.9904516, y: 0.17773992}
+      - {x: -1.068126, y: 0.17554846}
+      - {x: -1.0650721, y: 0.032043368}
+      - {x: -0.93876576, y: -0.018328518}
+      - {x: -1.2263463, y: 0.000754261}
+      - {x: -1.2489493, y: -0.013083102}
+      - {x: -1.4315522, y: -0.0034946501}
+      - {x: -1.6216414, y: 0.017231487}
+      - {x: -1.6216416, y: -0.31924573}
+      - {x: -1.2517481, y: -0.23552155}
+      - {x: -1.0981858, y: -0.3219005}
+      - {x: -0.90572953, y: -0.31932336}
+      - {x: -0.89705086, y: -0.21681091}
+      - {x: -0.7875955, y: -0.23500034}
+      - {x: -0.59989643, y: -0.23335081}
+      - {x: -0.6041553, y: -0.18376236}
+      - {x: -0.32054424, y: -0.11624749}
+      - {x: -0.062345028, y: -0.11466162}
+      - {x: -0.06596851, y: -0.1428186}
+      - {x: 0.055221558, y: -0.14029795}
+      - {x: 0.05488205, y: -0.08878204}
+      - {x: 0.037176132, y: -0.07431698}
+      - {x: 0.030333042, y: -0.023560002}
+    - - {x: -1.0963463, y: -0.14924574}
+      - {x: -1.0363463, y: -0.14924574}
+      - {x: -1.0363463, y: -0.16924573}
+      - {x: -1.0963463, y: -0.16924573}
+--- !u!114 &11424948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c157352d20f9fe34180a5bafb7c1de5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 12099220}
+  parent: {fileID: 173958}
 --- !u!114 &11452684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,9 +188,50 @@ MonoBehaviour:
   flipped: 0
   bullet: {fileID: 160836, guid: 3429ee97b6309b147b6e4bfa38ec63b6, type: 2}
   bulletSpawn: {fileID: 401604}
-  fireRate: 30
+  fireRate: 100
   radius: 1
   threshold: 1
+  scale: 1
+  semiautomatic: 0
+--- !u!120 &12099220
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166622}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 1
+    endWidth: 1
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
 --- !u!212 &21212272
 SpriteRenderer:
   m_ObjectHideFlags: 1
