@@ -12,9 +12,9 @@ GameObject:
   - 50: {fileID: 5084658}
   - 60: {fileID: 6076178}
   - 114: {fileID: 11406978}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,9 +25,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194818}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
-  m_LocalPosition: {x: -0.988, y: 0.311, z: 0}
-  m_LocalScale: {x: 0.125, y: 0.125, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.3264084, y: -0.34964883, z: -0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,7 +39,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194818}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -116,11 +116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c0c8b01d0a7044aafce94af77ada2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
-  parent: {fileID: 0}
+  speed: 20
   execption: {fileID: 177512, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
   damage: 25
-  angle: 0
+  angle: 129.17632
 --- !u!212 &21270340
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -145,7 +144,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1783731295
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 58dcdc50eb8bbf5489f95dd27096000c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

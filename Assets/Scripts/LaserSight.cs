@@ -16,6 +16,6 @@ public class LaserSight : MonoBehaviour {
 		Vector3 direction = parent.transform.eulerAngles;
         //layer 9 = player
         laser.SetPosition(0, transform.position);
-        laser.SetPosition(1, Physics2D.Raycast(transform.position, transform.forward,)
+        //laser.SetPosition(1, Physics2D.Raycast(transform.position, transform.forward,)
 	}
 }
