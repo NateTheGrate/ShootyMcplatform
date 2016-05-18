@@ -15,7 +15,9 @@ public class LaserSight : MonoBehaviour {
         float angle = Mathf.Deg2Rad * parent.GetComponent<WeaponController>().angleInDeg;
 		Vector3 direction = parent.transform.eulerAngles;
         //layer 9 = player
-        laser.SetPosition(0, transform.position);
+        //laser.SetPosition(0, transform.position);
         //laser.SetPosition(1, Physics2D.Raycast(transform.position, transform.forward,)
+
+
 	}
 }

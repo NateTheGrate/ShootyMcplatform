@@ -23,6 +23,9 @@ public class BulletController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag != "Player" ) {	//apply damage here
 			Destroy (this.gameObject);
+
+			//rb.velocity = Vector2.Reflect( rb.velocity, 
+
 		}
 	}
 }
