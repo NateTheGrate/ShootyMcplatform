@@ -16,10 +16,12 @@ public class WeaponController : MonoBehaviour {
 	public float fireRate = 30;
 	public bool semiautomatic = false; //semiautomatic in this game means fire on click, a rocket launcher for example could be semiautomatic but you shouldn't be able to fire it every click
 
+    public float mass = 1;
 	public float radius = 1;
 	public float scale = 1;
 
 	private int ticks;
+    private bool reactivateHitBox = false;
 	// Use this for initialization
 	void Start () {
 		ticks = 0;
@@ -68,6 +70,14 @@ public class WeaponController : MonoBehaviour {
 					}
 				}
 			}
+            //time to reactivate hitboxes inorder to collide with the player
+        if (reactivateHitBox && (Time.time % 1 == 0) ) {
+            foreach (Collider2D collisionBox in GetComponents<Collider2D>())
+            {
+                collisionBox.enabled = true;
+            }
+            reactivateHitBox = false;
+        }
 			ticks++;
 		}
 		
@@ -81,7 +91,37 @@ public class WeaponController : MonoBehaviour {
 			Vector2 result = new Vector2 (x, y);
 			return result;  
 		}
-		
+
+
+        void pickup() {
+            //destroy rigibbody and disable collider components
+            //you can only destroy and recreate rigidbodies :/
+            Destroy(GetComponent<Rigidbody2D>());
+            foreach (Collider2D collisionBox in GetComponents<Collider2D>())
+            {
+                collisionBox.enabled = false;
+            }
+            
+        }
+
+
+        void drop() {
+           
+            float angle = angleInDeg * Mathf.Deg2Rad;
+            //throwing physics
+            GameObject parent = transform.parent.gameObject;
+            PlayerController parentController = parent.GetComponent<PlayerController>();
+            gameObject.AddComponent<Rigidbody2D>();
+            GetComponent<Rigidbody2D>().mass = mass;
+        
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * (1 + Mathf.Cos(angle)) + parentController.rb.velocity.x, 
+                parentController.moveForce * (1 + Mathf.Sin(angle) )+ parentController.rb.velocity.y) );
+            //weapon.transform.position = new Vector3(weapon.transform.position.x + (0.5f * Mathf.Cos(angle)), weapon.transform.position.y + (0.5f * Mathf.Sin(angle)), 0);
+            //reactivate colliders
+            reactivateHitBox = true;
+         
+            transform.parent = null;
+    }
 		void flip(){
 			//flip over y axis, also flips children
 			transform.localScale = new Vector3( scale, -scale, scale );

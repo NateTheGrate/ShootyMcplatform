@@ -396,6 +396,7 @@ MonoBehaviour:
   bulletSpawn: {fileID: 725295039}
   fireRate: 10
   semiautomatic: 0
+  mass: 1
   radius: 0.5
   scale: 1
 --- !u!1 &725295038
@@ -894,6 +895,18 @@ Prefab:
     - target: {fileID: 21283768, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477040, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
+      propertyPath: moveForce
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477040, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
+      propertyPath: maxSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477040, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
+      propertyPath: maxJumpSpeed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}

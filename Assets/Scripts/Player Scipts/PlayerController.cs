@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	public float moveForce = 360f;
+	public float moveForce = 600f;
 	public float jumpForce = 50f;
-	public float maxSpeed = 15f;
+	public float maxSpeed = 4f;
 	public int airDragMultiplier = 2;
 	public float maxJumpSpeed = 50f;
 	public float yForceAwayFromWall = 400;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour {
 	[HideInInspector]public bool flipped = false;
 	/** [HideInInspector] **/public int jumpNumber = 0;
 
-	private Rigidbody2D rb;
+	[HideInInspector]public Rigidbody2D rb;
 	private GameObject wallObject;
 	private GameObject weapon;
 
@@ -53,6 +53,13 @@ public class PlayerController : MonoBehaviour {
 			// playerlayer, groundlayer, ignore collision?
 			Physics2D.IgnoreLayerCollision (9, 13, rb.velocity.y < 0.05);
 		}
+        //dropping guns
+        if (Input.GetKeyDown(KeyCode.G) && (weapon != null)) {
+            
+            weapon.GetComponent<WeaponController>().attachedTo = null;
+            holdingWeapon = false;
+            weapon = null;
+        }
 		if (weapon != null) {
 			if (weapon.GetComponent<WeaponController> ().flipped == true) {
 				GetComponent<SpriteRenderer> ().flipX = true;
@@ -132,21 +139,11 @@ public class PlayerController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		//Weapon Pickups
 		if(other.gameObject.tag.Equals("Weapon") && !holdingWeapon ){
-			other.transform.SetParent (this.transform);
-			weapon = other.gameObject;
-			//destroy rigibbody and disable collider components
-			//you can only destroy and recreate rigidbodies :/
-			Destroy( other.gameObject.GetComponent<Rigidbody2D>() );
-			foreach (Collider2D collisionBox in other.gameObject.GetComponents<Collider2D>()) {
-				collisionBox.enabled = false;
-			}
-
-			other.gameObject.GetComponent<WeaponController> ().attachedTo = this.gameObject;
-			foreach( ArmController arm in this.GetComponentsInChildren<ArmController> () ){
-				arm.weapon = other.gameObject.GetComponent<WeaponController>();
-			}
-			holdingWeapon = true;
-		}
+            other.transform.SetParent(this.transform);
+            weapon = other.gameObject;
+            other.gameObject.GetComponent<WeaponController>().attachedTo = this.gameObject;
+            holdingWeapon = true;
+        }
 	}
 
 	void OnCollisionExit2D(Collision2D other){
