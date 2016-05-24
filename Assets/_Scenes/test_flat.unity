@@ -176,7 +176,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 420534, guid: 514fb56682dc7044eb003ced9ac2ec95, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 514fb56682dc7044eb003ced9ac2ec95, type: 2}
@@ -240,6 +240,14 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 3.092
       objectReference: {fileID: 0}
+    - target: {fileID: 21255220, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465270, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
   m_IsPrefabParent: 0
@@ -295,7 +303,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1783731295
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 26b5d914b10bfb240948c30665930678, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -394,11 +402,12 @@ MonoBehaviour:
   threshold: 1
   bullet: {fileID: 164330, guid: cf7739bd00df1f14289a13379aaf258c, type: 2}
   bulletSpawn: {fileID: 725295039}
-  fireRate: 10
+  fireRate: 0.16667
   semiautomatic: 0
   mass: 1
   radius: 0.5
   scale: 1
+  teleportDistance: 0.5
 --- !u!1 &725295038
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,6 +637,14 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0.151
       objectReference: {fileID: 0}
+    - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: fireRate
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: teleportDistance
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 12099220, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
@@ -770,33 +787,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 163338, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 139250, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6062606, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: m_Offset.y
-      value: -0.45
-      objectReference: {fileID: 0}
     - target: {fileID: 11442242, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: scale
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 420452, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 420452, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 420452, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 0.45
+      propertyPath: teleportDistance
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
@@ -842,7 +835,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 421788, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 172290, guid: b9aeb3432e230074eb1e864ff693e51e, type: 2}
       propertyPath: m_Layer

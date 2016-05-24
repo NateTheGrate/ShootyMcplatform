@@ -19,12 +19,12 @@ public class WeaponController : MonoBehaviour {
     public float mass = 1;
 	public float radius = 1;
 	public float scale = 1;
-
-	private int ticks;
     private bool reactivateHitBox = false;
+	public float teleportDistance = 1;
+	private float shootCoolDown;
 	// Use this for initialization
 	void Start () {
-		ticks = 0;
+		
 	}
 	
 	// Update is called once per frame
@@ -40,7 +40,7 @@ public class WeaponController : MonoBehaviour {
 				float y = polarToRectangular (angle, radius).y;
 				
 				angleInDeg = radToDeg(angle);
-				
+				float shootCoolDown = 0;
 				if (Mathf.Abs (this.transform.rotation.eulerAngles.z - angleInDeg) > threshold) {
 					
 					//flip weapon when above or below the player
@@ -49,7 +49,6 @@ public class WeaponController : MonoBehaviour {
 						
 					}else { 
 						unflip ();
-						
 					}
 						
 					transform.rotation = Quaternion.Euler (new Vector3 (0, 0, angleInDeg));
@@ -62,23 +61,23 @@ public class WeaponController : MonoBehaviour {
 				if (Input.GetMouseButton (0)) {
 
 				//checks wether its semiautomatic or not
-				if ( (ticks >= fireRate) || (Input.GetMouseButtonDown(0) && semiautomatic) ) {
+				if ( (shootCoolDown <= Time.time) || (Input.GetMouseButtonDown(0) && semiautomatic) ) {
 						//spawn the bullet
 						bullet.GetComponent<BulletController> ().angle = angleInDeg;
 						Instantiate (bullet, bulletSpawn.position, Quaternion.Euler (new Vector3 (0, 0, angleInDeg)));
-						ticks = 0;
+						shootCoolDown = Time.time + fireRate; 
 					}
 				}
 			}
             //time to reactivate hitboxes inorder to collide with the player
-        if (reactivateHitBox && (Time.time % 1 == 0) ) {
-            foreach (Collider2D collisionBox in GetComponents<Collider2D>())
-            {
-                collisionBox.enabled = true;
-            }
-            reactivateHitBox = false;
-        }
-			ticks++;
+	        /**if (reactivateHitBox && (Time.time % 1 == 0) ) {
+	            foreach (Collider2D collisionBox in GetComponents<Collider2D>())
+	            {
+	                collisionBox.enabled = true;
+	            }
+	            reactivateHitBox = false;
+	        }**/
+	
 		}
 		
 		////////////////Math Stuff////////////////
@@ -93,10 +92,10 @@ public class WeaponController : MonoBehaviour {
 		}
 
 
-        void pickup() {
+        public void pickup() {
             //destroy rigibbody and disable collider components
             //you can only destroy and recreate rigidbodies :/
-            Destroy(GetComponent<Rigidbody2D>());
+			Destroy(GetComponent<Rigidbody2D>());
             foreach (Collider2D collisionBox in GetComponents<Collider2D>())
             {
                 collisionBox.enabled = false;
@@ -105,23 +104,28 @@ public class WeaponController : MonoBehaviour {
         }
 
 
-        void drop() {
+        public void drop() {
            
-            float angle = angleInDeg * Mathf.Deg2Rad;
+            float angle2 = angleInDeg * Mathf.Deg2Rad;
             //throwing physics
             GameObject parent = transform.parent.gameObject;
             PlayerController parentController = parent.GetComponent<PlayerController>();
             gameObject.AddComponent<Rigidbody2D>();
             GetComponent<Rigidbody2D>().mass = mass;
-        
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * (1 + Mathf.Cos(angle)) + parentController.rb.velocity.x, 
-                parentController.moveForce * (1 + Mathf.Sin(angle) )+ parentController.rb.velocity.y) );
-            //weapon.transform.position = new Vector3(weapon.transform.position.x + (0.5f * Mathf.Cos(angle)), weapon.transform.position.y + (0.5f * Mathf.Sin(angle)), 0);
+        	
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * 1.5f * (Mathf.Cos(angle2) ) , 
+			parentController.moveForce * 1.5f * (Mathf.Sin(angle2)  ) ) );
+			transform.position = new Vector3(transform.position.x + (teleportDistance * Mathf.Cos(angle)), transform.position.y + (teleportDistance * Mathf.Sin(angle)), 0);
+			foreach (Collider2D collisionBox in GetComponents<Collider2D>())
+			{
+				collisionBox.enabled = true;
+			}
             //reactivate colliders
-            reactivateHitBox = true;
+            //reactivateHitBox = true;
          
             transform.parent = null;
-    }
+   		}
+
 		void flip(){
 			//flip over y axis, also flips children
 			transform.localScale = new Vector3( scale, -scale, scale );

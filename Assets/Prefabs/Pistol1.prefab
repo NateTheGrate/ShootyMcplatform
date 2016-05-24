@@ -12,7 +12,7 @@ GameObject:
   - 60: {fileID: 6062606}
   - 50: {fileID: 5035918}
   - 114: {fileID: 11442242}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Pistol1
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 414602}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ Transform:
   m_GameObject: {fileID: 139250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.25, y: 1.35, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
   - {fileID: 414602}
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.45}
   m_Points:
     m_Paths:
     - - {x: -0.36221743, y: -0.115566015}
@@ -144,13 +144,15 @@ MonoBehaviour:
   angle: 0
   angleInDeg: 0
   flipped: 0
+  threshold: 1
   bullet: {fileID: 180314, guid: 020c16448c62f4c4c83bc760fbd70049, type: 2}
   bulletSpawn: {fileID: 414602}
-  fireRate: 30
-  radius: 1.1
-  threshold: 1
-  scale: 0.5
+  fireRate: 0.5
   semiautomatic: 1
+  mass: 1
+  radius: 1.1
+  scale: 0.45
+  teleportDistance: 1
 --- !u!212 &21248476
 SpriteRenderer:
   m_ObjectHideFlags: 1

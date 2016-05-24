@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour {
 	[HideInInspector]public bool movementControl = true;
 	[HideInInspector]public bool holdingWeapon = false;
 
-	private int ticks;
+	private float wallJumpDuration; //in seconds
+	private float pickupDuration;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();	
@@ -36,9 +38,13 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	// Controlls
 	void Update () {
+		
 		//cast a line to see wether or not it hit the ground
 		grounded = Physics2D.Linecast (transform.position, groundCheck.position );
 
+
+
+		///////////////////////////CONTROLS////////////////////////////////////////
 		// jumping on the ground and off of walls and other objects
 		if ((Input.GetButtonDown ("Jump")) && (jumpNumber < (jumpLimit + 1) && againstWall)) {
 			jump = true;
@@ -48,18 +54,25 @@ public class PlayerController : MonoBehaviour {
 			jump = true;
 			jumpNumber++;
 		}
+
 		// go back through platforms
 		if (Input.GetKeyDown (KeyCode.S)) {
 			// playerlayer, groundlayer, ignore collision?
 			Physics2D.IgnoreLayerCollision (9, 13, rb.velocity.y < 0.05);
 		}
+
         //dropping guns
         if (Input.GetKeyDown(KeyCode.G) && (weapon != null)) {
-            
+			pickupDuration = Time.time + 0.3f;
+			weapon.GetComponent<WeaponController> ().drop ();
             weapon.GetComponent<WeaponController>().attachedTo = null;
             holdingWeapon = false;
             weapon = null;
         }
+		////////////////////////////////////////////////////////////////////
+
+
+
 		if (weapon != null) {
 			if (weapon.GetComponent<WeaponController> ().flipped == true) {
 				GetComponent<SpriteRenderer> ().flipX = true;
@@ -67,21 +80,23 @@ public class PlayerController : MonoBehaviour {
 				GetComponent<SpriteRenderer> ().flipX = false;
 			}
 		}
-
+			
 		/* if (Input.GetKeyDown(KeyCode.W) ) {
 			rb.gravityScale = -rb.gravityScale;
 		}*/
-		ticks++;
+
 	}
 
 	void FixedUpdate(){
 		
-		if (ticks >= 6) {
+
+		if( wallJumpDuration <= Time.time){
 			movementControl = true;
 		}
-
-		if (movementControl) {
 			
+		//////////////////////PHYSICS MOVEMENT/////////////////////////
+		if (movementControl) {
+
 			//horizontal movement
 			float moveHorizontal = Input.GetAxis ("Horizontal");
 			Vector2 movement = new Vector2 (moveHorizontal, 0.0f);
@@ -108,7 +123,7 @@ public class PlayerController : MonoBehaviour {
 				rb.AddForce( new Vector2(-xForceAwayFromWall  * Mathf.Sign(wallObject.transform.position.x - this.transform.position.x) , jumpVector.y + yForceAwayFromWall)  ) ;
 				movementControl = false;
 				jump = false;
-				ticks = 0;
+				wallJumpDuration = Time.time + 0.1f;
 
 			}else if (jump) {
 				rb.AddForce (jumpVector ); 
@@ -118,8 +133,12 @@ public class PlayerController : MonoBehaviour {
 				rb.AddForce (movement * (moveForce * Mathf.Sign(rb.gravityScale) )  );
 			}
 		}
+		///////////////////////////////////////////////////////////////////
+
+
 	} 
-		
+
+	 
 	 void OnCollisionStay2D(Collision2D other){
 		//if not moving vertically and not against a wall then reset the jump number
 		if ((grounded && rb.velocity.y < 0.05) && (!againstWall)) {
@@ -138,15 +157,20 @@ public class PlayerController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		//Weapon Pickups
-		if(other.gameObject.tag.Equals("Weapon") && !holdingWeapon ){
+		if( (other.gameObject.tag.Equals("Weapon") ) && (!holdingWeapon) && (pickupDuration <= Time.time)){
             other.transform.SetParent(this.transform);
             weapon = other.gameObject;
             other.gameObject.GetComponent<WeaponController>().attachedTo = this.gameObject;
             holdingWeapon = true;
+			weapon.GetComponent<WeaponController> ().pickup ();
+
         }
 	}
 
 	void OnCollisionExit2D(Collision2D other){
 		againstWall = false;
 	}
+
+
 }
+
