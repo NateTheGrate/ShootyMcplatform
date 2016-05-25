@@ -39,7 +39,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 164330}
   m_UseAutoMass: 0
-  m_Mass: 0.03
+  m_Mass: 0.02
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   speed: 200
   execption: {fileID: 0}
   damage: 1
-  angle: 43.175827
+  angle: 186.48784
 --- !u!212 &21298172
 SpriteRenderer:
   m_ObjectHideFlags: 1

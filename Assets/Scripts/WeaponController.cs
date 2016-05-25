@@ -21,7 +21,7 @@ public class WeaponController : MonoBehaviour {
 	public float scale = 1;
     private bool reactivateHitBox = false;
 	public float teleportDistance = 1;
-	private float shootCoolDown;
+	private float shootCoolDown = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -40,7 +40,6 @@ public class WeaponController : MonoBehaviour {
 				float y = polarToRectangular (angle, radius).y;
 				
 				angleInDeg = radToDeg(angle);
-				float shootCoolDown = 0;
 				if (Mathf.Abs (this.transform.rotation.eulerAngles.z - angleInDeg) > threshold) {
 					
 					//flip weapon when above or below the player
@@ -122,7 +121,7 @@ public class WeaponController : MonoBehaviour {
 			}
             //reactivate colliders
             //reactivateHitBox = true;
-         
+			GetComponent<SpriteRenderer>().sortingOrder = 1;
             transform.parent = null;
    		}
 

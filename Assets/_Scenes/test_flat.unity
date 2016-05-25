@@ -230,11 +230,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 142204, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 133836, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 494808, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
       propertyPath: m_LocalPosition.x
@@ -247,6 +247,10 @@ Prefab:
     - target: {fileID: 11465270, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
       propertyPath: fireRate
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11465270, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
+      propertyPath: teleportDistance
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
@@ -271,7 +275,7 @@ GameObject:
   - 114: {fileID: 468479137}
   - 50: {fileID: 468479136}
   - 60: {fileID: 468479135}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: mp5k
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -402,7 +406,7 @@ MonoBehaviour:
   threshold: 1
   bullet: {fileID: 164330, guid: cf7739bd00df1f14289a13379aaf258c, type: 2}
   bulletSpawn: {fileID: 725295039}
-  fireRate: 0.16667
+  fireRate: 0.09
   semiautomatic: 0
   mass: 1
   radius: 0.5
@@ -416,7 +420,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 725295039}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Bullet Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,15 +623,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 173958, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 169868, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 166622, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: m_Layer
-      value: 11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 166622, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: m_IsActive
@@ -644,6 +648,10 @@ Prefab:
     - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: teleportDistance
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 21212272, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 12099220, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
@@ -789,6 +797,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11442242, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
       propertyPath: teleportDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442242, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 163338, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 139250, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
