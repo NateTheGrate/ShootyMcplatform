@@ -19,7 +19,7 @@ public class WeaponController : MonoBehaviour {
     public float mass = 1;
 	public float radius = 1;
 	public float scale = 1;
-    private bool reactivateHitBox = false;
+    //private bool reactivateHitBox = false;
 	public float teleportDistance = 1;
 	private float shootCoolDown = 0;
 	// Use this for initialization
