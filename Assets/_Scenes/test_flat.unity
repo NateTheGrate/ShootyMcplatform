@@ -252,6 +252,10 @@ Prefab:
       propertyPath: teleportDistance
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11465270, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
+      propertyPath: dropTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
   m_IsPrefabParent: 0
@@ -508,6 +512,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5014754, guid: 10b40adf72e2b0d418625d9f960baf90, type: 2}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10b40adf72e2b0d418625d9f960baf90, type: 2}
   m_IsPrefabParent: 0
@@ -603,7 +611,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: fireRate
-      value: 1.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: teleportDistance
@@ -612,6 +620,10 @@ Prefab:
     - target: {fileID: 21212272, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: dropTime
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 12099220, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
@@ -667,7 +679,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
+  m_BackGroundColor: {r: 0.30882353, g: 0.30882353, b: 0.30882353, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -770,6 +782,10 @@ Prefab:
     - target: {fileID: 139250, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442242, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
+      propertyPath: dropTime
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}

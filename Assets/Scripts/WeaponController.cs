@@ -19,9 +19,13 @@ public class WeaponController : MonoBehaviour {
     public float mass = 1;
 	public float radius = 1;
 	public float scale = 1;
-    //private bool reactivateHitBox = false;
+    private bool reactivateHitBox = false;
+
 	public float teleportDistance = 1;
+	public float dropTime = 0.05f;
+
 	private float shootCoolDown = 0;
+	private float hitboxActivator = 0;
 	// Use this for initialization
 	void Start () {
 		
@@ -56,7 +60,7 @@ public class WeaponController : MonoBehaviour {
 					
 				}
 
-				////////////////Bullet Stuff////////////////
+				//Bullet Stuff
 				if (Input.GetMouseButton (0)) {
 
 				//checks wether its semiautomatic or not
@@ -69,17 +73,17 @@ public class WeaponController : MonoBehaviour {
 				}
 			}
             //time to reactivate hitboxes inorder to collide with the player
-	        /**if (reactivateHitBox && (Time.time % 1 == 0) ) {
+			if (reactivateHitBox && hitboxActivator <= Time.time) {
 	            foreach (Collider2D collisionBox in GetComponents<Collider2D>())
 	            {
 	                collisionBox.enabled = true;
 	            }
 	            reactivateHitBox = false;
-	        }**/
+	        }
 	
 		}
 		
-		////////////////Math Stuff////////////////
+		//Math Stuff//
 		Vector2 polarToRectangular( float angle, float radius){
 			//polar(angle and radius) --> rectangle(x and y) coordinates MUST BE IN RADIANS
 			// x = rcos(theta)
@@ -112,16 +116,18 @@ public class WeaponController : MonoBehaviour {
             gameObject.AddComponent<Rigidbody2D>();
             GetComponent<Rigidbody2D>().mass = mass;
         	
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * 1.5f * (Mathf.Cos(angle2) ) , 
-			parentController.moveForce * 1.5f * (Mathf.Sin(angle2)  ) ) );
-			transform.position = new Vector3(transform.position.x + (teleportDistance * Mathf.Cos(angle)), transform.position.y + (teleportDistance * Mathf.Sin(angle)), 0);
-			foreach (Collider2D collisionBox in GetComponents<Collider2D>())
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * 1.5f * (Mathf.Cos(angle2) + (parentController.rb.velocity.x / 20) ) , 
+			parentController.moveForce * 1.5f * (Mathf.Sin(angle2)  )  + (parentController.rb.velocity.y ) ) );
+			
+			//transform.position = new Vector3(transform.position.x + (teleportDistance * Mathf.Cos(angle)), transform.position.y + (teleportDistance * Mathf.Sin(angle)), 0);
+			
+			/**foreach (Collider2D collisionBox in GetComponents<Collider2D>())
 			{
 				collisionBox.enabled = true;
-			}
+			}**/
             //reactivate colliders
-            //reactivateHitBox = true;
-			GetComponent<SpriteRenderer>().sortingOrder = 1;
+            reactivateHitBox = true;
+			hitboxActivator = dropTime + Time.time;
             transform.parent = null;
    		}
 

@@ -9,27 +9,35 @@ public class MainMenuController : MonoBehaviour {
 
 	private AudioSource source;
 	public AudioClip nope;
-	public AudioClip success;
+	public AudioClip start;
 
+	private float startDelay;
+	private bool nextLevel = false;
 	// Use this for initialization
 
 	void Start () {
 		source = GetComponent<AudioSource> ();
 	}
-	
+	void Update(){
+		if ( nextLevel && startDelay <= Time.time ) {
+			SceneManager.LoadScene ("test_flat");
+		}
+	}
 	public void startSinglePlayer(){
-		source.PlayOneShot (success, 1);
-		SceneManager.LoadScene ("test_flat");
-
+		source.PlayOneShot (start, 2);
+		//start transition into next scene
+		nextLevel = true;
+		startDelay = start.length + Time.time;
 	}
 
 	public void startMultiplayer(){
 		multiplayerButtonText.GetComponent<Text>().text = "Under Construction";
-		source.PlayOneShot (nope, 1);
+			source.PlayOneShot (nope, 1);
+
 	}
 
 	public void startOptions(){
 		optionsButtonText.GetComponent<Text>().text = "Under Construction";
-		source.PlayOneShot (nope, 1);
+			source.PlayOneShot (nope, 1);
 	}
 }
