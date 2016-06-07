@@ -625,6 +625,18 @@ Prefab:
       propertyPath: dropTime
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 481282, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 481282, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452684, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+      propertyPath: scale
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 12099220, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}

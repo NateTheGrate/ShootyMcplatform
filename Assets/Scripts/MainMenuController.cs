@@ -8,14 +8,17 @@ public class MainMenuController : MonoBehaviour {
 	public GameObject optionsButtonText;
 	public GameObject titleText;
 
-	private float colorChangeDelay = 0;
+	public GameObject[] weapons;
 
 	private AudioSource source;
 	public AudioClip nope;
 	public AudioClip start;
+	public Gradient g;
 
+	private float spawnDelay = 0;
 	private float startDelay;
 	private bool nextLevel = false;
+	private float strobeDuration = 4f;
 	// Use this for initialization
 
 	void Start () {
@@ -28,12 +31,19 @@ public class MainMenuController : MonoBehaviour {
 		if ( nextLevel && startDelay <= Time.time ) {
 			SceneManager.LoadScene ("test_flat");
 		}
+		//changing title colors	
+		float t = Mathf.PingPong(Time.time/ strobeDuration, 1f);
+		titleText.GetComponent<Text> ().color = g.Evaluate (t);
 
-		//change letter color in title
-		if (colorChangeDelay <= Time.time) {
-			//titleText.GetComponent<Text> ().color
-			colorChangeDelay = 1 + Time.time;
-		}
+		//rotating title
+		titleText.GetComponent<RectTransform> ().eulerAngles = new Vector3( 0.0f, 0.0f, (t - 0.5f) * 30);
+
+		//falling weapons
+		if (spawnDelay <= Time.time) {
+			int index = Random.Range (0, weapons.Length);
+			//Instantiate (weapons[index], new Vector3 (Random.Range (-10.3f, 10.3f), 3.89f, 0.0f),  ); NEEDS ROTATION
+			spawnDelay = 1f + Time.time;
+		}	
 	}
 
 	public void startSinglePlayer(){
@@ -55,21 +65,5 @@ public class MainMenuController : MonoBehaviour {
 	}
 
 
-	//color stuff for title
-	Color nextTitleColor(){
-		
-		if (titleText.GetComponent<Text> ().color == Color.red) {
-			return Color.Lerp (Color.red, Color.blue, 2);	
-		}
-
-		if (titleText.GetComponent<Text> ().color == Color.blue) {
-			return Color.Lerp (Color.red, Color.green, 2);
-		}
-
-		if (titleText.GetComponent<Text> ().color == Color.green) {
-			return Color.Lerp (Color.red, Color.red, 2);
-		} 
-		return titleText.GetComponent<Text>().color;
-	}
 
 }

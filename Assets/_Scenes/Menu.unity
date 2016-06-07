@@ -336,8 +336,56 @@ MonoBehaviour:
   multiplayerButtonText: {fileID: 1356116385}
   optionsButtonText: {fileID: 563277440}
   titleText: {fileID: 973770201}
+  weapons:
+  - {fileID: 167348, guid: 10b40adf72e2b0d418625d9f960baf90, type: 2}
+  - {fileID: 173958, guid: 7d32d5d61943e78499d30ea90d31f55a, type: 2}
+  - {fileID: 139250, guid: 3577767222853db4ab48bc29fd1c6ef5, type: 2}
+  - {fileID: 133836, guid: 0f60e0faf64da344c9f9ff3d19f0c52e, type: 2}
   nope: {fileID: 8300000, guid: e62a8078b32bbe644a120d3a4682e3b5, type: 3}
   start: {fileID: 8300000, guid: b9fcb39edf44a0444af7cc55ef6b4eee, type: 3}
+  g:
+    key0:
+      serializedVersion: 2
+      rgba: 4278241024
+    key1:
+      serializedVersion: 2
+      rgba: 4294932480
+    key2:
+      serializedVersion: 2
+      rgba: 4278190335
+    key3:
+      serializedVersion: 2
+      rgba: 0
+    key4:
+      serializedVersion: 2
+      rgba: 0
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 0
+    ctime1: 32768
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 771
+    atime1: 65535
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!82 &749728492
 AudioSource:
   m_ObjectHideFlags: 0
