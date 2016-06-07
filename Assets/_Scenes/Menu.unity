@@ -335,6 +335,7 @@ MonoBehaviour:
   singlePlayerButtonText: {fileID: 87138826}
   multiplayerButtonText: {fileID: 1356116385}
   optionsButtonText: {fileID: 563277440}
+  titleText: {fileID: 973770201}
   nope: {fileID: 8300000, guid: e62a8078b32bbe644a120d3a4682e3b5, type: 3}
   start: {fileID: 8300000, guid: b9fcb39edf44a0444af7cc55ef6b4eee, type: 3}
 --- !u!82 &749728492
@@ -580,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
