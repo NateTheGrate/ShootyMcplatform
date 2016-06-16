@@ -116,7 +116,7 @@ public class WeaponController : MonoBehaviour {
             gameObject.AddComponent<Rigidbody2D>();
             GetComponent<Rigidbody2D>().mass = mass;
         	
-			GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * 1.5f * (Mathf.Cos(angle2) + (parentController.rb.velocity.x / 20) ) , 
+			GetComponent<Rigidbody2D>().AddForce(new Vector2(parentController.moveForce * 1.5f * (Mathf.Cos(angle2) + (parentController.rb.velocity.x / 30) ) , 
 			parentController.moveForce * 1.5f * (Mathf.Sin(angle2)  )  + (parentController.rb.velocity.y ) ) );
 			
 			//transform.position = new Vector3(transform.position.x + (teleportDistance * Mathf.Cos(angle)), transform.position.y + (teleportDistance * Mathf.Sin(angle)), 0);
